@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "01.00.0000",
-    "title": "WMS_ERP_ESCALA_ORDERQUE"
+    "title": "WMS_ERP_ESCALA_ORDERQUERY (Consultar Pedidos)"
   },
   "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
   "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ERP_ESCALA_ORDERQUE/1.0",
