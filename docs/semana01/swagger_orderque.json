@@ -1,0 +1,214 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "01.00.0000",
+    "title": "WMS_ERP_ESCALA_ORDERQUE"
+  },
+  "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
+  "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ERP_ESCALA_ORDERQUE/1.0",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "end_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "start_date",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "A sample description of the Response",
+            "examples": {
+              "application/json": "[{...}]"
+            },
+            "schema": {
+              "$ref": "#/definitions/response-wrapper"
+            }
+          },
+          "500": {
+            "description": "Faults",
+            "schema": {
+              "$ref": "#/definitions/APIInvocationError"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2Authentication": []
+          },
+          {
+            "basicAuthentication": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2Authentication": {
+      "type": "oauth2",
+      "authorizationUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/authorize",
+      "tokenUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/token",
+      "flow": "accessCode",
+      "scopes": {
+        "https://oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.comurn:opc:resource:consumer::all": "all"
+      }
+    },
+    "basicAuthentication": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "response-wrapper": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "linenumber": {
+            "type": "string"
+          },
+          "cnpjtransportadora": {
+            "type": "string"
+          },
+          "shipfromorganization": {
+            "type": "string"
+          },
+          "ordernumber": {
+            "type": "string"
+          },
+          "product": {
+            "type": "string"
+          },
+          "customer": {
+            "type": "string"
+          },
+          "quantity": {
+            "type": "string"
+          },
+          "shipdate": {
+            "type": "string"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "partyname": {
+            "type": "string"
+          },
+          "postalcode": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "statecode": {
+            "type": "string"
+          },
+          "city": {
+            "type": "string"
+          },
+          "street": {
+            "type": "string"
+          },
+          "addressnumber": {
+            "type": "string"
+          },
+          "quarter": {
+            "type": "string"
+          },
+          "district": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "addressnumber",
+          "city",
+          "cnpjtransportadora",
+          "country",
+          "customer",
+          "district",
+          "linenumber",
+          "ordernumber",
+          "partyname",
+          "postalcode",
+          "priority",
+          "product",
+          "quantity",
+          "quarter",
+          "shipdate",
+          "shipfromorganization",
+          "statecode",
+          "street"
+        ]
+      },
+      "minItems": 1
+    },
+    "APIInvocationError": {
+      "type": "object",
+      "required": [
+        "detail",
+        "errorCode",
+        "errorDetails",
+        "title",
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "instance": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "errorPath": {
+                "type": "string"
+              },
+              "errorCode": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "errorCode",
+              "errorPath",
+              "instance",
+              "title",
+              "type"
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
