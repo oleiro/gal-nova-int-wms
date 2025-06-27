@@ -2,7 +2,7 @@
   "swagger": "2.0",
   "info": {
     "version": "01.00.0000",
-    "title": "WMS_ESCALA_ERP_INTEGRAT"
+    "title": "WMS_ESCALA_ERP_INTEGRATIONCONFIRM (Retornar confirmação de integração)"
   },
   "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
   "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ESCALA_ERP_INTEGRAT/1.0",
