@@ -1,0 +1,144 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "01.00.0000",
+    "title": "WMS_ESCALA_ERP_INTEGRAT"
+  },
+  "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
+  "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ESCALA_ERP_INTEGRAT/1.0",
+  "schemes": [
+    "https"
+  ],
+  "paths": {
+    "/{order_id}": {
+      "post": {
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "order_id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "500": {
+            "description": "Faults",
+            "schema": {
+              "$ref": "#/definitions/APIInvocationError"
+            }
+          },
+          "default": {
+            "description": "A sample description of the Response",
+            "examples": {
+              "application/json": "{\"message\":\"ok\",\"status\":\"S\"}"
+            },
+            "schema": {
+              "$ref": "#/definitions/response-wrapper-v2"
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2Authentication": []
+          },
+          {
+            "basicAuthentication": []
+          }
+        ]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2Authentication": {
+      "type": "oauth2",
+      "authorizationUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/authorize",
+      "tokenUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/token",
+      "flow": "accessCode",
+      "scopes": {
+        "https://oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.comurn:opc:resource:consumer::all": "all"
+      }
+    },
+    "basicAuthentication": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "response-wrapper": {
+      "type": "object",
+      "required": [
+        "message",
+        "status"
+      ],
+      "properties": {
+        "status": {
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "message": "ok",
+        "status": "S"
+      }
+    },
+    "APIInvocationError": {
+      "type": "object",
+      "required": [
+        "detail",
+        "errorCode",
+        "errorDetails",
+        "title",
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        },
+        "detail": {
+          "type": "string"
+        },
+        "errorCode": {
+          "type": "string"
+        },
+        "errorDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "instance": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "errorPath": {
+                "type": "string"
+              },
+              "errorCode": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "errorCode",
+              "errorPath",
+              "instance",
+              "title",
+              "type"
+            ]
+          },
+          "minItems": 1
+        }
+      }
+    }
+  }
+}
