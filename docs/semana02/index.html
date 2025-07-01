@@ -3,11 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Swagger UI - WMS_ESCALA_ERP_PICK</title>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui.css" />
   <style>
     html {
       box-sizing: border-box;
-      overflow: -moz-scrollbars-vertical;
       overflow-y: scroll;
     }
     *, *:before, *:after {
@@ -25,8 +24,178 @@
   <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui-standalone-preset.js"></script>
   <script>
     window.onload = function() {
-      SwaggerUIBundle({{
-        url: "swagger_pick.json",
+      const spec = {
+  "swagger": "2.0",
+  "info": {
+    "version": "01.00.0000",
+    "title": "WMS_ESCALA_ERP_PICK"
+  },
+  "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com",
+  "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ESCALA_ERP_PICK/1.0",
+  "schemes": ["https"],
+  "paths": {
+    "/pick/confirm/": {
+      "post": {
+        "operationId": "SetConfirm",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [{
+          "in": "body",
+          "name": "request-wrapper",
+          "required": false,
+          "schema": {
+            "$ref": "#/definitions/SetConfirm-request-wrapper"
+          }
+        }],
+        "responses": {
+          "default": {
+            "description": "A sample description of the Response",
+            "schema": {
+              "$ref": "#/definitions/SetConfirm-response-wrapper"
+            }
+          },
+          "500": {
+            "description": "Faults",
+            "schema": {
+              "$ref": "#/definitions/APIInvocationError"
+            }
+          }
+        },
+        "security": [{
+          "oauth2Authentication": []
+        }, {
+          "basicAuthentication": []
+        }]
+      }
+    },
+    "/pick/details/{order_num}": {
+      "get": {
+        "operationId": "GetPickDetails",
+        "produces": ["application/json"],
+        "parameters": [{
+          "name": "order_num",
+          "in": "path",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "default": {
+            "description": "A sample description of the Response",
+            "schema": {
+              "$ref": "#/definitions/GetPickDetails-response-wrapper"
+            }
+          },
+          "500": {
+            "description": "Faults",
+            "schema": {
+              "$ref": "#/definitions/APIInvocationError"
+            }
+          }
+        },
+        "security": [{
+          "oauth2Authentication": []
+        }, {
+          "basicAuthentication": []
+        }]
+      }
+    }
+  },
+  "securityDefinitions": {
+    "oauth2Authentication": {
+      "type": "oauth2",
+      "authorizationUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/authorize",
+      "tokenUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/token",
+      "flow": "accessCode",
+      "scopes": {
+        "https://oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.comurn:opc:resource:consumer::all": "all"
+      }
+    },
+    "basicAuthentication": {
+      "type": "basic"
+    }
+  },
+  "definitions": {
+    "SetConfirm-request-wrapper": {
+      "type": "object",
+      "required": ["Commit", "PickSlipLines", "TransactionMode"],
+      "properties": {
+        "Commit": {"type": "string"},
+        "TransactionMode": {"type": "string"},
+        "PickSlipLines": {
+          "type": "object",
+          "properties": {
+            "TransactionHeaderId": {"type": "string"},
+            "PickSlipPick": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "PickedQuantity": {"type": "string"},
+                  "PickSlip": {"type": "string"},
+                  "Line": {"type": "string"},
+                  "UOM": {"type": "string"},
+                  "SourceSubinventory": {"type": "string"},
+                  "SecondaryUOM": {"type": "string"},
+                  "SecondaryQuantity": {"type": "string"},
+                  "TransactionHeaderId": {"type": "string"}
+                },
+                "required": ["Line", "PickSlip", "PickedQuantity", "SecondaryQuantity", "SecondaryUOM", "SourceSubinventory", "TransactionHeaderId", "UOM"]
+              },
+              "minItems": 1
+            }
+          }
+        }
+      }
+    },
+    "SetConfirm-response-wrapper": {
+      "type": "object",
+      "required": ["message", "status"],
+      "properties": {
+        "status": {"type": "string"},
+        "message": {"type": "string"}
+      }
+    },
+    "APIInvocationError": {
+      "type": "object",
+      "required": ["detail", "errorCode", "errorDetails", "title", "type"],
+      "properties": {
+        "type": {"type": "string"},
+        "title": {"type": "string"},
+        "detail": {"type": "string"},
+        "errorCode": {"type": "string"},
+        "errorDetails": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {"type": "string"},
+              "instance": {"type": "string"},
+              "title": {"type": "string"},
+              "errorPath": {"type": "string"},
+              "errorCode": {"type": "string"}
+            },
+            "required": ["errorCode", "errorPath", "instance", "title", "type"]
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "GetPickDetails-response-wrapper": {
+      "type": "object",
+      "required": ["count", "hasMore", "items", "limit", "links", "offset"],
+      "properties": {
+        "items": {"type": "array"},
+        "count": {"type": "number"},
+        "hasMore": {"type": "boolean"},
+        "limit": {"type": "number"},
+        "offset": {"type": "number"},
+        "links": {"type": "array"}
+      }
+    }
+  }
+};
+      SwaggerUIBundle({
+        spec: spec,
         dom_id: '#swagger-ui',
         deepLinking: true,
         presets: [
@@ -34,7 +203,7 @@
           SwaggerUIStandalonePreset
         ],
         layout: "StandaloneLayout"
-      }});
+      });
     };
   </script>
 </body>
