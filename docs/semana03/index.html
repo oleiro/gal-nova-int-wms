@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI - WMS_ESCALA_ERP_MANIFEST</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui.css" />
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui-bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = function() {
+      const spec = {"swagger": "2.0", "info": {"version": "01.00.0000", "title": "WMS_ESCALA_ERP_MANIFEST"}, "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com", "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ESCALA_ERP_MANIFEST/1.0", "schemes": ["https"], "paths": {"/{shippment_id}": {"put": {"produces": ["application/json"], "parameters": [{"name": "shippment_id", "in": "path", "required": true, "type": "string"}], "responses": {"500": {"description": "Faults", "schema": {"$ref": "#/definitions/APIInvocationError"}}, "default": {"description": "A sample description of the Response", "examples": {"application/json": "{\"Action\":\"CONFIRM\",\"Organization\":\"OI_OCC_B2B1_SC\",\"ShipmentName\":\"1658620\",\"links\":[{\"kind\":\"item\",\"rel\":\"self\",\"name\":\"shippingTransactions\",\"href\":\"https://eiuv-test.fa.la1.oraclecloud.com:443/fscmRe-stApi/resources/11.13.18.05/shippingTransactions/1658620\"},{\"kind\":\"item\",\"rel\":\"canonical\",\"name\":\"shippingTransactions\",\"href\":\"https://eiuv-test.fa.la1.oraclecloud.com:443/fscmRe-stApi/resources/11.13.18.05/shippingTransactions/1658620\"}],\"ErrorMessage\":\"The shipment 1658620 was confirmed.\",\"Result\":\"SUCCESS\"}"}, "schema": {"$ref": "#/definitions/response-wrapper"}}}, "security": [{"oauth2Authentication": []}, {"basicAuthentication": []}]}}}, "securityDefinitions": {"oauth2Authentication": {"type": "oauth2", "authorizationUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/authorize", "tokenUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/token", "flow": "accessCode", "scopes": {"https://oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.comurn:opc:resource:consumer::all": "all"}}, "basicAuthentication": {"type": "basic"}}, "definitions": {"response-wrapper": {"type": "object", "required": ["Action", "ErrorMessage", "Organization", "Result", "ShipmentName", "links"], "properties": {"Action": {"type": "string"}, "ErrorMessage": {"type": "string"}, "Organization": {"type": "string"}, "Result": {"type": "string"}, "ShipmentName": {"type": "string"}, "links": {"type": "array", "items": {"type": "object", "properties": {"rel": {"type": "string"}, "href": {"type": "string"}, "name": {"type": "string"}, "kind": {"type": "string"}}, "required": ["href", "kind", "name", "rel"]}, "minItems": 1}}}, "APIInvocationError": {"type": "object", "required": ["detail", "errorCode", "errorDetails", "title", "type"], "properties": {"type": {"type": "string"}, "title": {"type": "string"}, "detail": {"type": "string"}, "errorCode": {"type": "string"}, "errorDetails": {"type": "array", "items": {"type": "object", "properties": {"type": {"type": "string"}, "instance": {"type": "string"}, "title": {"type": "string"}, "errorPath": {"type": "string"}, "errorCode": {"type": "string"}}, "required": ["errorCode", "errorPath", "instance", "title", "type"]}, "minItems": 1}}}}};
+      SwaggerUIBundle({
+        spec: spec,
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        layout: "StandaloneLayout"
+      });
+    };
+  </script>
+</body>
+</html>
