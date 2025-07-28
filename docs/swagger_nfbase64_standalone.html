@@ -1,0 +1,29 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Swagger UI - WMS_ERP_ESCALA_NFBASE64</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui.css" />
+</head>
+<body>
+  <div id="swagger-ui"></div>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui-bundle.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.4/swagger-ui-standalone-preset.js"></script>
+  <script>
+    window.onload = function() {
+      const spec = {"swagger": "2.0", "info": {"version": "01.00.0000", "title": "WMS_ERP_ESCALA_NFBASE64"}, "host": "oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.com", "basePath": "/ic/api/integration/v2/flows/rest/project/WMS/WMS_ERP_ESCALA_NFBASE64/1.0", "schemes": ["https"], "paths": {"/{order_num}": {"get": {"produces": ["application/json"], "parameters": [{"name": "order_num", "in": "path", "required": true, "type": "string"}], "responses": {"500": {"description": "Faults", "schema": {"$ref": "#/definitions/APIInvocationError"}}, "default": {"description": "A sample description of the Response", "examples": {"application/json": "{\"country\":\"BR\",\"peso_bruto\":\"9\",\"full_name\":\"Ri Happy brinquedos Ri happy\",\"nfbase64\":\"qwertyu\",\"city\":\"S\u00e3o Paulo\",\"street\":\"Rua mourato coelho\",\"order_number\":\"o220048\",\"numero_nf\":\"1610\",\"cep_destin\":\"01046-010\",\"state_code\":\"SP\",\"chave_nf\":\"42190315605065000219550010000016101000016101\",\"address_number\":\"983\"}"}, "schema": {"$ref": "#/definitions/response-wrapper"}}}, "security": [{"oauth2Authentication": []}, {"basicAuthentication": []}]}}}, "securityDefinitions": {"oauth2Authentication": {"type": "oauth2", "authorizationUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/authorize", "tokenUrl": "https://idcs-7525b27081184ef49f312528727a87d6.identity.oraclecloud.com/oauth2/v1/token", "flow": "accessCode", "scopes": {"https://oicgalapagos-idx7wlzgozje-ia.integration.us-ashburn-1.ocp.oraclecloud.comurn:opc:resource:consumer::all": "all"}}, "basicAuthentication": {"type": "basic"}}, "definitions": {"response-wrapper": {"type": "object", "required": ["address_number", "cep_destin", "chave_nf", "city", "country", "full_name", "nfbase64", "numero_nf", "order_number", "peso_bruto", "state_code", "street"], "properties": {"order_number": {"type": "string"}, "full_name": {"type": "string"}, "cep_destin": {"type": "string"}, "country": {"type": "string"}, "state_code": {"type": "string"}, "city": {"type": "string"}, "street": {"type": "string"}, "address_number": {"type": "string"}, "peso_bruto": {"type": "string"}, "numero_nf": {"type": "string"}, "chave_nf": {"type": "string"}, "nfbase64": {"type": "string"}}}, "APIInvocationError": {"type": "object", "required": ["detail", "errorCode", "errorDetails", "title", "type"], "properties": {"type": {"type": "string"}, "title": {"type": "string"}, "detail": {"type": "string"}, "errorCode": {"type": "string"}, "errorDetails": {"type": "array", "items": {"type": "object", "properties": {"type": {"type": "string"}, "instance": {"type": "string"}, "title": {"type": "string"}, "errorPath": {"type": "string"}, "errorCode": {"type": "string"}}, "required": ["errorCode", "errorPath", "instance", "title", "type"]}, "minItems": 1}}}}};
+      SwaggerUIBundle({
+        spec: spec,
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        layout: "StandaloneLayout"
+      });
+    };
+  </script>
+</body>
+</html>
